@@ -1,7 +1,7 @@
 //TODO Primo esercizio - Palidroma: Chiedere all’utente di inserire una parola. Creare una funzione per capire se la parola inserita è palindroma
 
 //* Chiedere all'utente la parola
-var parola = prompt('Inserisci una parola');
+var parola = (prompt('Inserisci una parola')).toLowerCase();
 
 if(palindroma(parola)){
     document.getElementById('risultatoParola').innerHTML = 'La parola inserita è palindroma';
@@ -15,24 +15,32 @@ if(palindroma(parola)){
 //* 1 Chiedere all'utente se vuole pari o dispari
 //* 2 Chiedere all'utente un numero da 1 a 5
 //* 3 Generare un numero casuale da 1 a 5
-//* 4 Sommare i due numeri
-//* 5 Definire se il numero è pari o dispari
-//* 6 Dichiarare un vincitore
+//* 4 Sommare i due numeri e definire se il numero è pari o dispari
+//* 5 Dichiarare un vincitore
 
 
-var pariDispariUser = prompt('pari o dispari');
-console.log(pariDispariUser);
-var numUser = parseInt(prompt('Inserisci un numero da 1 a 5'));
-console.log(numUser);
+//* 1
+var pariDispariUser;
+while (pariDispariUser != 'pari' && pariDispariUser != 'dispari'){
+    pariDispariUser = (prompt('pari o dispari')).toLowerCase();
+}
+
+//* 2
+var numUser = 0;
+while (numUser < 1 || numUser > 5){
+    numUser = parseInt(prompt('Inserisci un numero da 1 a 5'));
+}
+
+//* 3
 var numPc = getRndInteger(1, 5);
-console.log(numPc);
+// console.log(numPc);
 
 
 document.getElementById('pd-user').innerHTML += pariDispariUser;
 document.getElementById('n-user').innerHTML += numUser;
 document.getElementById('n-pc').innerHTML += numPc;
 
-
+//* 4 e 5
 if(pari(numUser + numPc) && pariDispariUser == 'pari' || !pari(numUser + numPc) && pariDispariUser == 'dispari'){
     // l'utente vince
     document.getElementById('risultatoNum').innerHTML = 'Hai vinto';
@@ -45,7 +53,6 @@ if(pari(numUser + numPc) && pariDispariUser == 'pari' || !pari(numUser + numPc) 
 
 
 //! ---------------SEZIONE PER LE FUNZIONI------------------
-
 //* PRIMO ESERCIZIO
 function palindroma(parolaCheck) {
     //* fare in modo che la parola venga verificata al contrario o scritta al contrario e compararla con quella scritta dall'utente
